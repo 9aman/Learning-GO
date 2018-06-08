@@ -19,6 +19,7 @@ func main(){
 			v := incrementer
 			v++
 			incrementer = v
+			// mu.Unlock() if we put our unlock here we will get data race as in the next line we are accessing the value of incrementer in the println which is reading or writing in a variable by multiple goroutines at the same time.
 			fmt.Println("incrementer", incrementer)
 			mu.Unlock()
 			fmt.Println("NumGoroutine", runtime.NumGoroutine())
