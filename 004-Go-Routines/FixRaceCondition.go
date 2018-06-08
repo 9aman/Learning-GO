@@ -1,12 +1,12 @@
 package main
 
 import (
-	"sync"
-	"runtime"
 	"fmt"
+	"runtime"
+	"sync"
 )
 
-func main(){
+func main() {
 	var mu sync.Mutex
 
 	var wg sync.WaitGroup
@@ -14,7 +14,7 @@ func main(){
 	incrementer := 0
 
 	for i := 0; i < 100; i++ {
-		go func(){
+		go func() {
 			mu.Lock()
 			v := incrementer
 			v++
@@ -28,6 +28,6 @@ func main(){
 
 	}
 	wg.Wait()
-	fmt.Println("values of incerementer",incrementer)
+	fmt.Println("values of incerementer", incrementer)
 	fmt.Println("No of go routines", runtime.NumGoroutine())
 }
