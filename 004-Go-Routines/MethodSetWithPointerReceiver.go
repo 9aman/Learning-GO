@@ -28,4 +28,5 @@ func main(){
 	//saySomething(p)// this doesn't work
 	// But the below code works
 	p.speak() // for methods it's fine but when we use those methods in interfaces it doesn't. So we can pass both pointer to the value and the value even for pointer receiver.
+	(&p).speak()
 }
