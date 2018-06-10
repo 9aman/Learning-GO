@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	c := fanIn(fillNum(40), fillNum(0))
 
-	for i := 0; i < 10; i++{
+	for i := 0; i < 10; i++ {
 		fmt.Println("No received", <-c)
 	}
 }
@@ -13,13 +13,13 @@ func main() {
 func fanIn(c1, c2 <-chan int) <-chan int {
 
 	c := make(chan int)
-	go func(){
+	go func() {
 		for {
 			c <- <-c1
 		}
 	}()
 
-	go func(){
+	go func() {
 		for {
 			c <- <-c2
 		}
@@ -29,10 +29,11 @@ func fanIn(c1, c2 <-chan int) <-chan int {
 
 func fillNum(k int) <-chan int {
 	c := make(chan int)
-	go func(){
-		for i := 0;;i++ {
-			c <- k+i
+	go func() {
+		for i := 0; ; i++ {
+			c <- k + i
 		}
 	}()
 	return c
 }
+

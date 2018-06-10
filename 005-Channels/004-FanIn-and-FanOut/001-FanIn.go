@@ -1,8 +1,8 @@
 package main
 
 import (
-	"sync"
 	"fmt"
+	"sync"
 )
 
 func main() {
@@ -23,11 +23,11 @@ func main() {
 
 }
 
-func send1(o, e chan<- int){
-	for i := 0; i < 10; i++{
-		if i % 2 == 0 {
+func send1(o, e chan<- int) {
+	for i := 0; i < 10; i++ {
+		if i%2 == 0 {
 			e <- i
-		} else{
+		} else {
 			o <- i
 		}
 	}
@@ -35,20 +35,20 @@ func send1(o, e chan<- int){
 	close(e)
 }
 
-func receive1(o, e <-chan int, fanin chan<- int){
+func receive1(o, e <-chan int, fanin chan<- int) {
 	var wg sync.WaitGroup
 
 	wg.Add(2)
 
-	go func(){
-		for v := range o{
+	go func() {
+		for v := range o {
 			fanin <- v
 		}
 		wg.Done()
 	}()
 
-	go func(){
-		for v := range e{
+	go func() {
+		for v := range e {
 			fanin <- v
 		}
 		wg.Done()
@@ -56,3 +56,4 @@ func receive1(o, e <-chan int, fanin chan<- int){
 	wg.Wait()
 	close(fanin) // otherwise we will have deadlock as we are reading values from it in main
 }
+
