@@ -46,6 +46,6 @@ func Process(c, c1 chan int){
 }
 
 func operation(n int) int{
-	time.Sleep(time.Second)
+	time.Sleep(time.Second	)
 	return int(math.Sqrt(float64(n)))
 }
