@@ -1,0 +1,3 @@
+Golint differs from gofmt. Gofmt re-formats Go source code, whereas golint prints out style mistakes.
+
+Golint differs from govet. Govet is concerned with correctness, whereas golint is concerned with coding style
