@@ -1,0 +1,17 @@
+BET
+
+Benchmark
+Example
+Test
+
+BenchmarkCat(b *testing.B)
+ExampleCat()
+TestCat(t *testing.T)
+
+go test
+go test -bench . // . is for all thr benchmark codes
+go test -cover
+go test -coverprofile cover.out
+go tool cover -html=cover.out
+
+godoc -http=:8080
